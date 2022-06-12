@@ -1,6 +1,6 @@
 //make a white noise generator with band pass modulation on mouse move (done)
 
-//create web audio class(es)
+//create web audio class(es) ---done
 let x = window.innerWidth;
 let y = window.innerHeight;
 
@@ -12,19 +12,24 @@ const ctx = new AudioContext({
     latencyHint: 'interactive',
 });
 
+//outputs what should make for a good value mod
+
 function mousemove(event){
     function mousemove(event){
-        return event.position;
+        let x = event.clientX;
+        let y = event.clientY;
+        let position = (x * y) / 2;
+        console.log(position);
     }
     
     window.addEventListener('mousemove', mousemove);
 }
 mousemove()
 
-  //biquad filter class set to bandpass
+  //biquad filter class set to bandpass(done)
   const bandpass = ctx.createBiquadFilter();
   bandpass.type = 'bandpass';
-  bandpass.frequency.value = `${Math.ceil(mousemove)}`;
+  bandpass.frequency.value = 420; //`${Math.ceil(mousemove)}`;
   bandpass.Q.value = 1;
   bandpass.gain.value = 0;
 
@@ -51,10 +56,9 @@ source.start(0);
 
 
 
-source.connect(bandpass);
-bandpass.connect(delay);
-delay.connect(ctx.destination);
+// source.connect(bandpass);
+// bandpass.connect(delay);
+// delay.connect(ctx.destination);
 
 
 //functor event listener for mouse move to set frequency try exponential is a bad idea - need to keep within samplerate
-
