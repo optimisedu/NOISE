@@ -10,11 +10,9 @@ class Sound{
         
         const wave__get = document.getElementById('wave');
         const wave = wave__get.value;
-          console.log(wave);
 
         const freq__get = document.getElementById('lfo');
         const freq = freq__get.value;
-            console.log(freq);
 
         const _freq = freq / 2;
 
@@ -51,8 +49,10 @@ class Sound{
         this.ws.curve = curve()
 
         this.osc.connect(this.lpf);
-        this.osc__two.connect(this.lpf);
-        this.lfo.connect(this.lpf && this.del.delayTime && this.vel.);
+  this.osc__two.connect(this.lpf);
+  this.osc.connect(this.vel);
+  this.osc__two.connect(this.vel);
+        this.lfo.connect(this.lpf && this.vel)
         this.lpf.connect(this.vel);
         this.vel.connect(this.ws);
         this.vel.connect(this.context.destination);
@@ -82,18 +82,17 @@ class Sound{
         this.osc.stop(this.context.currentTime+stopTime);
     }
 }
-// make a white noise generator with band pass modulation on mouse move (done)
-
-// add timestreching and waveshaping
-
-// create web audio class(es) ---done
 
 function mousemove(event){
     function mousemove(event){
 new Sound(ctx).play(event.clientX);
-console.log(event.clientX);
     }
 
     window.addEventListener('mousemove',mousemove);
 }
 mousemove()
+
+const ctx = new AudioContext({
+    sampleRate: 44100,
+    latencyHint: 'interactive'
+});
