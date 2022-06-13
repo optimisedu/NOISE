@@ -16,6 +16,8 @@ class Sound{
         const freq = freq__get.value;
             console.log(freq);
 
+        const _freq = freq / 2;
+
         //waveShaping  - destruction
         function curve(amount) {
            amount = Math.random() * 87;
@@ -43,16 +45,17 @@ class Sound{
         this.osc.frequency.value = freq;
         this.osc__two.type = wave;
         this.sub.value = 40;
-        this.osc__two.frequency.value = freq / 2;
-        this.lfo.type = wave;
+        this.osc__two.frequency.value = _freq;
+        this.lfo.type = "sine";
         this.lfo.frequency.value = 4;
         this.ws.curve = curve()
 
         this.osc.connect(this.lpf);
         this.osc__two.connect(this.lpf);
-        this.lfo.connect(this.lpf && this.del.delayTime);
+        this.lfo.connect(this.lpf && this.del.delayTime && this.vel.);
         this.lpf.connect(this.vel);
         this.vel.connect(this.ws);
+        this.vel.connect(this.context.destination);
         this.sub.connect(this.context.destination);
         this.ws.connect(this.context.destination);
     }
@@ -94,71 +97,3 @@ console.log(event.clientX);
     window.addEventListener('mousemove',mousemove);
 }
 mousemove()
-
-const ctx = new AudioContext({
-    sampleRate: 44100,
-    latencyHint: 'interactive'
-});
-
-//outputs what should make for a good value mod
-
-const bandPass = new BiquadFilterNode({
-    context: ctx,
-    type: 'bandpass',
-    frequency: 420,    
-    Q: 4
-})
-
-const lfo = new OscilatorNode({
-    context: ctx,
-    type: 'sine',
-    frequency: 8,
-    detune: 0
-})
-
-const gain = new GainNode({
-    context: ctx,
-    gain: 0.5
-});
-
-const delay = new DelayNode({
-    context: ctx,
-    delayTime: 0.5,
-    maxDelayTime: 1.5
-});
-
-
-
-  //biquad filter class set to bandpass(done)
-
-
-
-//max samplerate to fill with random 2d waves/time
-
-
-let bufferSize = 2 * ctx.sampleRate,
-    noiseBuffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate),
-    output = noiseBuffer.getChannelData(0);
-for (let i = 0; i < bufferSize; i++) {
-    output[i] = Math.random() * 2 - 1;
-}
-
-//save whitenoise to buffer
-
-let source = ctx.createBufferSource();
-source.buffer = noiseBuffer;
-source.loop = true;
-source.start(0);
-
-
-source.connect(bandpass);
-bandpass.connect(delay);
-delay.connect(gain);
-gain.connect(lfo);
-lfo.connect(delay.maxDelayTime);
-delay.connect(ctx.destination);
-
-
-
-
-//functor event listener for mouse move to set frequency try exponential is a bad idea - need to keep within samplerate
