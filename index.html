@@ -7,31 +7,64 @@
     <title>Noise</title>
     <link rel="stylesheet" href="./styles.css"></link>
 </head>
-<body>
-    <div class = "container">
-        <div class = "glass ">
+<body> 
+    <main class = "flex__container">
+        <div class="flex__container">
+        <div class = "glass__one">
             <h1 class = "title">Playing with NOISE</h1>
-            <hr>
-            <p class = "text__center">Move the mouse around the screen to change noise variables</p>
-            <hr>
-            <div class = "container__column"
-            <label for="attack" class = slider__text>Attack</label>
-            <input name="attack" class="slider__text" id="attack" type="range" min="0" max="1" value="0.2" step="0.1" />
-            <label for="delay" class = slider__text>Delay</label>
-            <input name="delay" class="slider__text" id="attack" type="range" min="0" max="1" value="0.2" step="0.1" />
-            <div class ="container_column"></div>
-            <label for="sustain" class = slider__text>Sustain</label>
-            <input name="sustain" class="slider__text" id="attack" type="range" min="0" max="1" value="0.2" step="0.1" />
-            <label for="release" class = slider__text>Release</label>
-            <input name="release" class="slider__text" id="release" type="range" min="0" max="1" value="0.5" step="0.1" />
-            <hr>
-            <h2 class="text__center">Osilators & Value</h2>
-            <hr>
-            <h2 class="text__center">LFO & Frequency</h2>
-            </div>
-            </div>
+                <hr class = "__hr">
+                    <h2 class = "text__center">ENV ONE</h2>
+                    <p class = "text__center">Move the mouse around the screen to change noise variables</p>
+                <hr class = "__hr">
+            <div class = "flex__row">
+                <label for="attack " class = slider__text>Attack</label>
+                <input name="attack" class="slider__text" id="attack" type="range" min="0" max="1" value="0" step="0.1" />
+                <label for="delay  " class = slider__text>Decay</label>
+                <input name="delay" class="slider__text" id="delay" type="range" min="0" max="1" value="1" step="0.1" />
+                <div class ="flex__row"></div>
+                <label for="sustain" class = slider__text>Sustain</label>
+                <input name="sustain" class="slider__text" id="sustain" type="range" min="0" max="1" value="1" step="0.1" />
+                <label for="release" class = slider__text>Release</label>
+                <input name="release" class="slider__text" id="release" type="range" min="0" max="1" value="0" step="0.1" />
+            <hr class = "__hr">
         </div>
     </div>
+        </div>
+    <div>
+        <div class = "flex__row glass">
+            <h1 class="title">Osilators & Value</h1>
+                <select list="oscilators" name="oscilators" id="wave">
+                <h2>Select your oscilator</h2>
+                    <datalist id="waves">
+                        <option value="sine"> sine </option>
+                        <option value="square"> square </option>
+                        <option value="triangle"> triangle </option>
+                        <option value="sawtooth"> sawtooth </option>
+                    </datalist>
+                </select>
+                <label for="lfo" class = "flex__row">frequency</label>
+                <input name="lfo" id="lfo" type="range" min="0" max="880" value=" 440" step="2" />
+            <div class="">            
+                    <input name="theramin" class="flex switch- " id="theramin" type="checkbox" value = "true"  />
+                    <label for="theramin" class = "flex switch-label text__center">Harmonics?</label>  
+
+                    <input name="theramin" class="flex switch- " id="theramin" type="checkbox" value = "true"  />          
+                    <label for="theramin" class = "flex switch-label text__center ">Sub Bass?</label>  
+                </div>
+            <div class="flex">
+                <button class="btn__flex" id="play">Play</button>
+                <button class="btn__flex" id="stop">Stop</button>
+                </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        <div class = "flex__row">    
+            <div class = "flex__container glass">
+            <h1 class="title">LFO & Frequency</h2>
+            </div>
+        </div>
+    </main>
     <script src="./white.js"></script> 
 </body>
 </html>
