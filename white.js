@@ -31,7 +31,9 @@ class Sound{
 
 
         this.lfo = this.context.createOscillator();
+        this.sub = this.context.createOscillator();
         this.osc = this.context.createOscillator();
+        this.osc__two = this.context.createOscillator();
         this.lpf = this.context.createBiquadFilter();
         this.del = this.context.createDelay();
         this.vel = this.context.createGain();
@@ -39,14 +41,19 @@ class Sound{
 
         this.osc.type = wave;
         this.osc.frequency.value = freq;
+        this.osc__two.type = wave;
+        this.sub.value = 40;
+        this.osc__two.frequency.value = freq / 2;
         this.lfo.type = wave;
         this.lfo.frequency.value = 4;
         this.ws.curve = curve()
 
         this.osc.connect(this.lpf);
+        this.osc__two.connect(this.lpf);
         this.lfo.connect(this.lpf && this.del.delayTime);
         this.lpf.connect(this.vel);
         this.vel.connect(this.ws);
+        this.sub.connect(this.context.destination);
         this.ws.connect(this.context.destination);
     }
 
