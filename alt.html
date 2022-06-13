@@ -1,0 +1,71 @@
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Further HTML, JS progression, CSS regression!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noise</title>
+    <link rel="stylesheet" href="./styles.css"></link>
+</head>
+<body> 
+    <main class = "flex__container">
+        <div class="flex__container">
+        <div class = "glass__one">
+            <h1 class = "title">Playing with NOISE</h1>
+            <hr>
+            <h2 class = "text__center">ENV ONE</h2>
+            <p class = "text__center">Move the mouse around the screen to change noise variables</p>
+            <hr>
+            <div class = "flex__row">
+            <label for="attack " class = slider__text>Attack</label>
+            <input name="attack" class="slider__text" id="attack" type="range" min="0" max="1" value="0.5" step="0.1" />
+            <label for="delay  " class = slider__text>Delay</label>
+            <input name="delay" class="slider__text" id="delay" type="range" min="0" max="1" value="0.5" step="0.1" />
+            <div class ="flex__row"></div>
+            <label for="sustain" class = slider__text>Sustain</label>
+            <input name="sustain" class="slider__text" id="sustain" type="range" min="0" max="1" value="0.5" step="0.1" />
+            <label for="release" class = slider__text>Release</label>
+            <input name="release" class="slider__text" id="release" type="range" min="0" max="1" value="0.5" step="0.1" />
+            <hr>
+        </div>
+        </div>
+            <div class = "flex__container glass">
+            <div class = "flex__row ">
+            <h1 class="title">Osilators & Value</h2>
+                <select list="oscilators" name="oscilators" id="wave">
+                <p>Select an oscillator</p>
+                <datalist id="waves">
+                <option value="sine"> sine </option>
+                <option value="square"> square </option>
+                <option value="triangle"> triangle </option>
+                <option value="sawtooth"> sawtooth </option>
+                </datalist>
+        </div>
+        </div>
+            <div class = "flex__container glass">
+
+            <label for="lfo" class = "flex__row">frequency</label>
+            <input name="lfo" class="flex__row" id="lfo" type="range" min="0" max="880" value=" 440" step="2" />
+            <div>            
+                    <input name="theramin" class="flex__row" id="theramin" type="checkbox" value = "true"  />
+                    <label for="theramin" class = "flex__row">Harmonics?</label>  
+
+                <div>            
+                    <input name="theramin" class="flex__row" id="theramin" type="checkbox" value = "true"  />
+                    <label for="theramin" class = "flex__row">Sub Bass?</label>  
+                </div>
+        </div>
+            </div>
+        </div>
+        <div class = "flex__row">    
+            <div class = "flex__container glass">
+            <h1 class="title">LFO & Frequency</h2>
+            </div>
+        </div>
+    </div>
+</main>
+    <script src="./white.js"></script> 
+</body>
+</html>
