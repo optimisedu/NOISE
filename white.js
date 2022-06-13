@@ -55,6 +55,8 @@ source.loop = true;
 source.start(0);
 
 
+//-----------------------------------------------------------uncomment the connections to get started-----------------------------------------------------------------//
+//---V 0.2 Includes state and a theramin for a js framework to manage please contact if you are interested in contributing i am versed in frontend JS frameworkings---//
 
 // source.connect(bandpass);
 // bandpass.connect(delay);
